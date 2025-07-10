@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Generador de Contraseñas</title>
     <style>
-        body {
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
             background-color: #2C2F33;
             color: white;
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             text-align: center;
+            box-sizing: border-box;
+        }
+        body {
+            flex-direction: column;
             padding: 20px;
+            font-size: clamp(1rem, 2vw, 1.25rem);
         }
         input, button {
-            font-size: 16px;
+            font-size: clamp(1rem, 1.5vw, 1rem);
             padding: 10px;
             margin: 5px;
             border-radius: 5px;
@@ -23,14 +34,35 @@
             background-color: #7289DA;
             color: white;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
         button:hover {
             background-color: #5b6eae;
         }
         #password {
             width: 80%;
+            max-width: 400px;
             text-align: center;
             font-weight: bold;
+        }
+        /* Agrupar inputs checkbox para mejor responsive */
+        div {
+            margin: 10px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+        div input[type="checkbox"] {
+            transform: scale(1.2);
+            margin-right: 5px;
+            cursor: pointer;
+        }
+        div label {
+            font-size: clamp(0.9rem, 1.2vw, 1rem);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
@@ -41,10 +73,10 @@
     <input type="number" id="length" min="8" max="64" value="12">
     
     <div>
-        <input type="checkbox" id="uppercase" checked> Mayúsculas
-        <input type="checkbox" id="lowercase" checked> Minúsculas
-        <input type="checkbox" id="numbers" checked> Números
-        <input type="checkbox" id="symbols" checked> Símbolos
+        <label><input type="checkbox" id="uppercase" checked> Mayúsculas</label>
+        <label><input type="checkbox" id="lowercase" checked> Minúsculas</label>
+        <label><input type="checkbox" id="numbers" checked> Números</label>
+        <label><input type="checkbox" id="symbols" checked> Símbolos</label>
     </div>
 
     <button onclick="generarContrasena()">Generar Contraseña</button>
